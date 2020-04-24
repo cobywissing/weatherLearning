@@ -1,54 +1,13 @@
 import pandas as pd
 import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import normalize
-
-# output layer: linear regression
-
-# for default arguments, python has them declared in the function call
-def _init_(self, x, y, hidden_units = 10, learning_rate = 0.01, reg_lambda = 0):
-    self.x = x
-    self.y = y
-    self.y_hat = np.zeros(y.shape)
-    self.hidden_units = hidden_units
-    # hidden units is just used in making the size of W1 and W2.
-    # initialize with random weights
-    self.W1 = np.random.randn(x.shape[1], hidden_units)
-    # NEED TO FIGURE OUT HOW MANY OUTPUTS FOR THIS
-    self.W2 = np.random.randn(hidden_units, 1)
-    self.b1 = np.zeros((1 , hidden_units))
-    self.b2 = np.zeros(1, 1)
-    self.learning_rate = learning_rate
-    self.epsilon = 1e-4
-    self.reg_lambda = reg_lambda
-    self.cost_history = []
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
 
 
-def sigmoid(self, x):
-    # activation function for the neurons
-    return 1 / (1 +np.exp(-x))
-
-def sigmoid_prime(self, x):
-    # The derivative of the activation, used in backprob
-    return x * (1 - x)
-
-def feedforward(self):
-    z1 = np.dot(self.x, self.W1) + self.b1
-    self.a1 = self.sigmoid(z1)
-    z2 = np.dot(self.a1, self.W2) + self.b2
-    # MIGHT NEED TO CHANGE THIS LINE!!!!!
-    # MIGHT NEED TO USE A LINEAR FUNCTION HERE
-    self.y_hat = self.sigmoid(z2)
-
-# In the example, this was only used to add to the cost history
-def mean_squared_error_loss(self):
-    regularization = self.reg_lambda * (np.sum(np.square(self.W1) + np.sum(np.square(self.W2))))
-    loss = -np.mean(np.square(self.y - self.y_hat)) + regularization
-    return loss
-
-def backprop(self):
-    delta_2 = self.y_hat - self.y
-    dW2 = np.dot(self.a1.T, delta_2) + self.reg_lambda * self.W2
 
 # function to load data from csv
 def load_data(filename):
@@ -60,25 +19,63 @@ def processFlightData(data):
         ['Month', 'Day', 'Origin_Airport', 'WeatherDelay'])
 
 
-# loading the weather data
-weatherData = load_data("us-weather-events/US_WeatherEvents_2016-2019.csv")
-# print()
+
 
 # loading the 2015 flight data
 # flight2015 = load_data('2015-flight-delays/flights.csv')
 
 # loading the smaller 2017 flight data
 flight2017 = load_data('flight-delays/fl_samp.csv')
-
 flight2017Processed = processFlightData(flight2017)
 print(flight2017Processed.head())
 print(flight2017Processed["WeatherDelay"].max())
 
 # loading the other flight data
 flightData = load_data('flight-delays/flight.csv')
-
-# flightDataWeatherDelay = flightData[flightData['WeatherDelay'] > 0]
-# print(flightDataWeatherDelay.head())
-
 flightDateProcessed = processFlightData(flightData)
 print(flightDateProcessed.head())
+
+# Combine the two datasets
+frames = [flight2017Processed, flightDateProcessed]
+combinedFlightData = pd.concat(frames)
+
+# preprossess data
+# Establish variables
+scalar = StandardScaler()
+ct = ColumnTransformer(
+    [("scaling", scalar, ["Month", "Day"]),
+     ("onehot", OneHotEncoder(sparse=False), ["Origin_Airport"])]
+)
+
+# Set the X and Y for the datasets
+X = combinedFlightData.loc[:, "Month":"Origin_Airport"]
+y = combinedFlightData["WeatherDelay"].values
+
+print(X.head())
+
+ct.fit(X)
+X_trans = ct.transform(X)
+
+# Split the dataset into Test, Train, and Validate
+X_train_full, x_test, Y_train_full, y_test = train_test_split(X_trans, y, test_size=0.2)
+X_train, X_valid, Y_train, Y_valid = train_test_split(X_train_full, Y_train_full, test_size=0.2)
+
+
+# Set up model
+model = keras.models.Sequential([
+    keras.layers.Dense(30, activation="relu", input_shape=X_train.shape[1:]),
+    keras.layers.Dense(1)
+])
+model.compile(loss="mean_squared_error", optimizer="sgd")
+
+#train
+history = model.fit(X_train, Y_train, epochs=1000,
+                    validation_data=(X_valid, Y_valid))
+
+# evaluate
+model_test = model.evaluate(x_test, y_test)
+
+# Plot results
+pd.DataFrame(history.history).plot(figsize=(8, 5))
+plt.grid(True)
+plt.show()
