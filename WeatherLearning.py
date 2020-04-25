@@ -43,8 +43,7 @@ combinedFlightData = pd.concat(frames)
 # Establish variables
 scalar = StandardScaler()
 ct = ColumnTransformer(
-    [("scaling", scalar, ["Month", "Day"]),
-     ("onehot", OneHotEncoder(sparse=False), ["Origin_Airport"])]
+    [("onehot", OneHotEncoder(sparse=False), ["Month", "Day", "Origin_Airport"])]
 )
 
 # Set the X and Y for the datasets
