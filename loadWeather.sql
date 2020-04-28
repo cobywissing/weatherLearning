@@ -1762,6 +1762,3 @@ CREATE TEMPORARY TABLE x Select distinct month, day, year from isWeather where A
 SELECT 0 as 'weather', 'KSVN' as 'AirportCode', a.month, a.day, a.year FROM alldates AS a WHERE NOT EXISTS (SELECT * FROM x AS b WHERE a.month=b.month AND a.day=b.day AND a.year=b.year);
 insert into isWeather (weather, AirportCode, month, day, year) (SELECT 0 as 'weather', 'KSVN' as 'AirportCode', a.month, a.day, a.year FROM alldates AS a WHERE NOT EXISTS (SELECT * FROM x AS b WHERE a.month=b.month AND a.day=b.day AND a.year=b.year));
 drop table x;
-/* copying sunny info to main table
-*/
-insert into main (Type, Severity, AirportCode, month, day, year) SELECT 'Sunny' as 'Type', 'None' as 'Severity', a.AirportCode, a.month, a.day, a.year FROM isweather AS a WHERE EventId > 114095;
