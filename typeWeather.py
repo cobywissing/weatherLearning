@@ -1,5 +1,10 @@
+import pydotplus
+import collections
+import csv as c
 import pandas as pd
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import tree
+from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 enc = OneHotEncoder(handle_unknown='ignore')
@@ -10,7 +15,7 @@ def main():
     #print(df.shape)
     #print(train_dataset.head())
     #print(test_dataset.shape)
-    X_columns = ['month','day', 'year']#'AirportCode',
+    X_columns = ['month','day']#'AirportCode',
     y_column = ['Type', 'Severity']
 
     X_data = df[X_columns].to_numpy()

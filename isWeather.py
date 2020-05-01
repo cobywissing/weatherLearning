@@ -1,3 +1,6 @@
+import pydotplus
+import collections
+import csv as c
 import pandas as pd
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import tree
@@ -8,13 +11,11 @@ enc = OneHotEncoder(handle_unknown='ignore')
 def main():
     
     df = pd.read_csv(r"IsWeather.csv")
-    lb = preprocessing.LabelEncoder()
-    lf = preprocessing.LabelEncoder()
     #y_one_hot_encoder = LabelBinarizer()
     #print(df.shape)
     #print(df.head())
     #print(test_dataset.shape)
-    X_columns = ['month','day', 'year', 'AirportCode']#'AirportCode'
+    X_columns = ['month','day', 'AirportCode']#'AirportCode'
     y_column = ['weather']
 
     X_data = df[X_columns].to_numpy()
