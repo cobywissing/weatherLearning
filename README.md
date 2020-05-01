@@ -15,6 +15,6 @@ To create the data sets run: <br>
 - exportdata.sql<br>
 - insert the following line to TypeWeather.csv EventId	Type	Severity	AirportCode	month	day	year
 - insert the following line to IsWeather.csv EventId	weather	AirportCode	month	day	year
-- *be sure to have the alterted weather file from the drive
+- *be sure to have the alterted weather file from the drive <a href="https://drive.google.com/file/d/1jRpqhq5kIHlA5PexbttFj8eSFFOpYmC5/view?usp=sharing">
 
 After this, run runWeather.py
