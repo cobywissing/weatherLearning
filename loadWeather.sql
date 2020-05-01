@@ -22,6 +22,9 @@ AirportCode = REPLACE(@AirportCode,'\r','');
 --------------------------------------------------------*/
 CREATE TEMPORARY TABLE x SELECT EventID as c FROM isWeather f GROUP BY f.month, f.day, f.year, f.AirportCode HAVING COUNT(f.month) > 1 ;
 SET SQL_SAFE_UPDATES = 0;
+update main set type = 'Rain' where type = 'Precipitation'; /* set precipatation classfier to rain classifier */
+delete from main where Severity = 'UNK'; /* removed records with unknown severity classifier */
+delete from main where Severity = 'Other'; /* removed records with other severity classifier */
 CREATE TEMPORARY TABLE y (select EventId from isWeather where EventID Not In (select c from x));
 Insert into duplicates (EventID) select * from y;
 Drop table y;
