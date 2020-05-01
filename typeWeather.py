@@ -1,11 +1,5 @@
-import pydotplus
-import graphviz
-import collections
-import csv as c
 import pandas as pd
-from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import tree
-from sklearn.datasets import load_iris
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
