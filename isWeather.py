@@ -16,24 +16,24 @@ def main():
     lb = preprocessing.LabelEncoder()
     lf = preprocessing.LabelEncoder()
     #y_one_hot_encoder = LabelBinarizer()
-    print(df.shape)
-    print(df.head())
+    #print(df.shape)
+    #print(df.head())
     #print(test_dataset.shape)
-    X_columns = ['month','day', 'year']#'AirportCode'
+    X_columns = ['month','day', 'year', 'AirportCode']#'AirportCode'
     y_column = ['weather']
 
     X_data = df[X_columns].to_numpy()
     y_data = df[y_column].to_numpy()
     X_data = X_data.tolist()
     y_data = y_data.tolist()
-    print(X_data[0])
-    print(y_data[0])
+    #print(X_data[0])
+    #print(y_data[0])
 
 
     X_train, X_test, y_train, y_test = train_test_split(X_data, y_data, test_size=0.2)
 
     enc.fit(X_data)
-    print("transforming X's dataset on : ", enc.categories_, "\n")
+    #print("transforming X's dataset on : ", enc.categories_, "\n")
     X_train = enc.transform(X_train).toarray()
     X_test = enc.transform(X_test).toarray()
 
