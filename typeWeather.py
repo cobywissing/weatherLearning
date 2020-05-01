@@ -1,10 +1,5 @@
-import pydotplus
-import collections
-import csv as c
 import pandas as pd
-from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import tree
-from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 enc = OneHotEncoder(handle_unknown='ignore')
