@@ -14,4 +14,4 @@ To create the data sets run: <br>
 - exportdata.sql<br>
 - *be sure to have the alterted weather file from the drive
 
-After this, run 
+After this, run runWeather.py
