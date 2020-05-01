@@ -10,9 +10,9 @@ flight delays https://www.kaggle.com/mrferozi/flight-delays
 
 
 To create the data sets run: <br>
-createWeather.sql
-loadWeather.sql
-exportdata.sql
+createWeather.sql<br>
+loadWeather.sql <br>
+exportdata.sql<br>
 *be sure to have the alterted weather file from the drive
 
 After this, run 
