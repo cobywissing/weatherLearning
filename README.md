@@ -4,8 +4,8 @@ Blair Weaver and Coby Wissing
 Github: <a href="https://github.com/cobywissing/weatherLearning">GitHub</a>
 
 Datasets: <br>
-[ US Weather Events (2016 - 2019) ] (https://www.kaggle.com/sobhanmoosavi/us-weather-events) <br>
-[ flight delays ] (https://www.kaggle.com/mrferozi/flight-delays)
+[US Weather Events (2016 - 2019)](https://www.kaggle.com/sobhanmoosavi/us-weather-events) <br>
+[flight delays](https://www.kaggle.com/mrferozi/flight-delays)
 
 
 To create the data sets run: <br>
