@@ -1,11 +1,17 @@
+import pydotplus
+import graphviz
+import collections
+import csv as c
 import pandas as pd
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import tree
+from sklearn.datasets import load_iris
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
+enc = OneHotEncoder(handle_unknown='ignore')
 def main():
-    enc = OneHotEncoder(handle_unknown='ignore')
+    
     df = pd.read_csv(r"IsWeather.csv")
     lb = preprocessing.LabelEncoder()
     lf = preprocessing.LabelEncoder()
@@ -36,5 +42,6 @@ def main():
     y_pred = clf.predict(X_test)
     print(confusion_matrix(y_test, y_pred))
     print(classification_report(y_test, y_pred))
-
-main()
+    return clf
+def getEncoder():
+    return enc

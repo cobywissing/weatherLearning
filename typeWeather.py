@@ -1,10 +1,17 @@
+import pydotplus
+import graphviz
+import collections
+import csv as c
 import pandas as pd
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn import tree
+from sklearn.datasets import load_iris
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
+enc = OneHotEncoder(handle_unknown='ignore')
 def main():
-    enc = OneHotEncoder(handle_unknown='ignore')
+    
     df = pd.read_csv(r"TypeWeather.csv")
     lb = preprocessing.LabelEncoder()
     lf = preprocessing.LabelEncoder()
@@ -74,3 +81,6 @@ def main():
     #print("weather type accuracy: ", count2)
     #print("severity type accuracy: ", count3)
     #print("weather or severity accuracy: ", count4)
+    return clf
+def getEncoder():
+    return enc

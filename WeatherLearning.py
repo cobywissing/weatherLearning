@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 
-
+ct = 0
 
 # function to load data from csv
 def load_data(filename):
@@ -70,3 +70,6 @@ def main():
     pd.DataFrame(history.history).plot(figsize=(8, 5))
     plt.grid(True)
     plt.show()
+    return model
+def getEncoder():
+    return ct
