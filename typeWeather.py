@@ -15,7 +15,7 @@ def main():
     #print(df.shape)
     #print(train_dataset.head())
     #print(test_dataset.shape)
-    X_columns = ['month','day', 'year']#'AirportCode',
+    X_columns = ['month','day']#'AirportCode',
     y_column = ['Type', 'Severity']
 
     X_data = df[X_columns].to_numpy()
