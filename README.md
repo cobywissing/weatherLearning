@@ -9,7 +9,7 @@ US Weather Events (2016 - 2019) https://www.kaggle.com/sobhanmoosavi/us-weather-
 flight delays https://www.kaggle.com/mrferozi/flight-delays
 
 
-To create the data sets run: 
+To create the data sets run: <br>
 createWeather.sql
 loadWeather.sql
 exportdata.sql
