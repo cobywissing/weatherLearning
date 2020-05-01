@@ -2,20 +2,12 @@ import pandas as pd
 
 def load_data(filename):
     return pd.read_csv(filename)
-def main():
-    temp = load_data("airports-extended.csv")
 
-    print(temp.head())
-    value = 'ATL'
-
-
-    # temp.c1[temp.c1 == 8].index.tolist()
-temp = load_data("airports-extended.csv")
-
-print(temp.head())
-value = 'KATL'
-
-
-temp1 = temp.loc[temp['ICAO'] == value].index[0]
-print(temp1)
-print(temp.iloc[temp1, 0])
+def main(value):
+    airportCodes = load_data("airports-extended.csv")
+    codeLocation = airportCodes.loc[airportCodes['ICAO'] == value]
+    if (not len(codeLocation) == 0):
+        covertedCode = codeLocation.index[0]
+        return airportCodes.iloc[covertedCode, 0]
+    else:
+        return ""

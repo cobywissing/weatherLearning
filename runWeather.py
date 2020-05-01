@@ -1,6 +1,7 @@
 import typeWeather
 import isWeather
 import WeatherLearning
+import changeCode
 
 print("--------------Preparing isWeather.py--------------")
 clf1 = isWeather.main()
@@ -19,3 +20,8 @@ month = input("Enter a month (1-12):" )
 day = input("Enter a day (1-31):")
 airport = input("Enter an airport code (ex. KATL):")
 
+convertedAirport = changeCode.main(airport)
+if(convertedAirport == ""):
+    print("Airport Code was not found in conversion table")
+else:
+    pass
