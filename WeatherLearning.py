@@ -30,8 +30,6 @@ def main():
     frames = [flight2017Processed, flightDateProcessed]
     combinedFlightData = pd.concat(frames)
 
-    print(combinedFlightData.loc[:, "Origin_Airport"].value_counts())
-
     # preprossess data
     # Establish variables
     scalar = StandardScaler()
