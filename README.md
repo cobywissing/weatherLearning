@@ -6,7 +6,7 @@ Github: <a href="https://github.com/cobywissing/weatherLearning">GitHub</a>
 Datasets: <br>
 [US Weather Events (2016 - 2019)](https://www.kaggle.com/sobhanmoosavi/us-weather-events) <br>
 [flight delays](https://www.kaggle.com/mrferozi/flight-delays) <br>
-[Airports, Train Stations, and Ferry Terminals](https://www.kaggle.com/open-flights/airports-train-stations-and-ferry-terminals)
+[Airports, Train Stations, and Ferry Terminals](https://www.kaggle.com/open-flights/airports-train-stations-and-ferry-terminals) *modifed since no column headers and removed unneccessary data
 
 
 To create the data sets run: <br>
