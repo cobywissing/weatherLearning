@@ -19,7 +19,8 @@ To create the data sets run: <br>
 After this, run runWeather.py
 
 
-For simplicity, all altered data is available on our [Google Drive](https://drive.google.com/open?id=1E-gnXnlhlYqjQdO0JcxlBDMvMfjfH_gL)<br>
+# For simplicity
+All altered data is available on our [Google Drive](https://drive.google.com/open?id=1E-gnXnlhlYqjQdO0JcxlBDMvMfjfH_gL)<br>
 Download:
 - flight-delays
 - airports-extended.csv
