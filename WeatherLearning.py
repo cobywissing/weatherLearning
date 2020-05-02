@@ -32,7 +32,6 @@ def main():
 
     # preprossess data
     # Establish variables
-    scalar = StandardScaler()
     # ct = ColumnTransformer(
     #     [("onehot", OneHotEncoder(sparse=False), ["Month", "Day", "Origin_Airport"])]
     # )
