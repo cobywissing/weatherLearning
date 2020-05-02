@@ -8,7 +8,6 @@ Datasets: <br>
 [flight delays](https://www.kaggle.com/mrferozi/flight-delays) <br>
 [Airports, Train Stations, and Ferry Terminals](https://www.kaggle.com/open-flights/airports-train-stations-and-ferry-terminals) *modifed since no column headers and removed unneccessary data
 
-
 To create the data sets run: <br>
 - createWeather.sql<br>
 - loadWeather.sql <br>
@@ -18,3 +17,6 @@ To create the data sets run: <br>
 - *be sure to have the alterted weather file from the drive <a href="https://drive.google.com/file/d/1jRpqhq5kIHlA5PexbttFj8eSFFOpYmC5/view?usp=sharing">Drive Link</a>
 
 After this, run runWeather.py
+
+
+For simplicity, all altered data is available on our [Google Drive](https://drive.google.com/open?id=1E-gnXnlhlYqjQdO0JcxlBDMvMfjfH_gL)
