@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 
-ct = 0
+ct = OneHotEncoder(sparse=False)
 
 # function to load data from csv
 def load_data(filename):
@@ -33,9 +33,9 @@ def main():
     # preprossess data
     # Establish variables
     scalar = StandardScaler()
-    ct = ColumnTransformer(
-        [("onehot", OneHotEncoder(sparse=False), ["Month", "Day", "Origin_Airport"])]
-    )
+    # ct = ColumnTransformer(
+    #     [("onehot", OneHotEncoder(sparse=False), ["Month", "Day", "Origin_Airport"])]
+    # )
 
     # Set the X and Y for the datasets
     X = combinedFlightData.loc[:, "Month":"Origin_Airport"] #
