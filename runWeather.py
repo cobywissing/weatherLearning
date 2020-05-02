@@ -30,7 +30,9 @@ while airportCode != 'exit':
         print("invalid month")
         continue
     months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    airportCode = input("Enter the airportCode of your departure airport(Ex. ATL, LAX, ..., JFK):")
+    airportCode = input("Enter the airportCode of your departure airport(Ex. KATL, KLAX, ..., KJFK). Enter exit to stop:")
+    X_test = enc1.transform([[month, day]]).toarray()
+    y_pred = clf1.predict(X_test)
     if airportCode == 'exit':
         break
     if y_pred[0] == 0:
