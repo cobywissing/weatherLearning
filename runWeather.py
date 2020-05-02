@@ -38,17 +38,17 @@ while airportCode != 'exit':
     if y_pred[0] == 0:
         print("isWeather calculated sunny weather for your flight on the", months[month-1], day, " at ", airportCode, "airport, assume no weather delay.")
         continue
-    print("isWeather calculated the there to be ", y_pred[0], " on ", month, "/", day, " at ", airportCode, "airport.")
+    print("isWeather calculated the there to be weather on ", months[month-1], day, " at ", airportCode, "airport.")
     X_test = enc2.transform([[month, day]]).toarray()
     y_pred = clf2.predict(X_test)
-    print("isWeather calculated the there to be ", y_pred[0][0], " ", y_pred[0][1], " on ", month, "/", day, " at ", airportCode, "airport.")
+    print("TypeWeather calculated the following weather ", y_pred[0][0], " ", y_pred[0][1], " on ", month, "/", day, " at ", airportCode, "airport.")
     convertedAirport = changeCode.main(airportCode)
     if (convertedAirport == ""):
         print("Airport Code was not found in conversion table")
     else:
-        X_test = enc3.transform([[month, day, convertedAirport]])#.toarray()
+        X_test = enc3.transform([[month, day, convertedAirport]])
         y_pred = clf3.predict(X_test)
-        print("WeatherLearning calculated that there will be a ", y_pred[0][0], " delay")
+        print("WeatherLearning calculated that there will be a ", y_pred[0][0], "minute weather delay on the day of your flight")
 
 
 
